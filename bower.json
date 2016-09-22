@@ -1,0 +1,40 @@
+{
+  "name": "bowerapp",
+  "authors": [
+    "sahidulislam <sahidul.islam@rootnext.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-slick": "^0.2.1",
+    "bootstrap": "v4.0.0-alpha.2",
+    "filament-sticky": "^0.1.7",
+    "slick-carousel": "^1.5.9",
+    "tether": "^1.2.0",
+    "angular-ui-router": "^0.2.18",
+    "angular-bootstrap": "^1.3.2",
+    "oclazyload": "^1.0.9",
+    "angular-animate": "^1.5.5",
+    "angular-jwt": "^0.0.9",
+    "angular-ui-select": "^0.17.1",
+    "ngSweetAlert": "angular-sweetalert#^1.1.0",
+    "angular-sanitize": "^1.5.6",
+    "ngSticky": "^1.8.10",
+    "ngSmoothScroll": "^2.0.0",
+    "wow": "wowjs#^1.1.2",
+    "animate.css": "^3.5.2",
+    "angular-route": "^1.5.8"
+  },
+  "devDependencies": {
+    "angular-translate": "^2.11.0"
+  }
+}

@@ -1,0 +1,33 @@
+<div class="jumbotron text-center">
+    <h1>Home Page</h1>
+
+    <p>{{ message }}</p>
+    <div class="row">
+        <!-- ng-repeat allows areas of markup to be repeated for a set number of times using model data -->
+        <!-- in this case it is a property on the view model called data which is being filtered using the search -->
+        <!-- property on the model -->
+        <div class="col-sm-6" ng-repeat="car in cars">
+            <!-- using a bootstrap well to style -->
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- ng-src instead of src to allow correct functionality with angular -->
+                        <img src="http://localhost:3000/public{{car.photo.url}}"
+                             class="img-rounded img-responsive well-image">
+                    </div>
+                    <div class="col-md-6">
+                        <!-- ng-src instead of src to allow correct functionality with angular -->
+                        <h4>{{car.title}}</h4>
+                        <!-- more angular data binding -->
+                        <p><strong>Price: </strong>{{car.price}}</p>
+                        <p><strong>Discount: </strong>{{car.discount}}</p>
+                        <p><strong>Details: </strong>{{car.details}}</p>
+                        <!-- ng-click is an angular directive to allow click events within angular -->
+                        <!-- data-toggle and data-target are bootstrap attributes to trigger the popup modal -->
+
+                    </div>
+                </div><!-- row -->
+            </div><!-- well -->
+        </div><!-- col-xs-6 -->
+    </div>
+</div>
