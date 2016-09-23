@@ -3,9 +3,9 @@
 		.module('bowerApp')
 		.factory('Car', Car);
 
-	Car.$inject = ['$http'];
+	Car.$inject = ['$http','Hostname'];
 
-	function Car($http) {
+	function Car($http, Hostname) {
 		var Car = {
 			all: all,
 			get: get,
@@ -16,38 +16,43 @@
 			passwordChange: passwordChange,
 			passwordReset: passwordReset
 		};
+		//var host = 'http://demo-api.jinerbadsha.com/';
 		return Car;
 
 		function all() {
-			return $http.get('http://localhost:3000/api/cars');
+			return $http.get(Hostname + '/api/cars');
 		}
 
 		function get(id) {
-			return $http.get('http://localhost:3000/api/users', id);
+			return $http.get(Hostname + '/api/users', id);
 		}
 
-		function post(customer) {
-			return $http.post('http://localhost:3000/api/sign_up', user);
+		function post(car) {
+			return $http({
+					method : "POST",
+					url: Hostname + '/api/cars',
+					data: { car: car }
+			});
 		}
 
 		function put(id) {
-			return $http.put('http://localhost:3000/api/users', id);
+			return $http.put(Hostname + '/api/users', id);
 		}
 
 		function del(id) {
-			return $http.delete('http://localhost:3000/api/users/' + id);
+			return $http.delete(Hostname + '/api/users/' + id);
 		}
 
 		function address() {
-			return $http.get('http://localhost:3000/api/addresses');
+			return $http.get(Hostname + '/api/addresses');
 		}
 
 		function passwordChange(data) {
-			return $http.patch('http://localhost:3000/api/change_password', data);
+			return $http.patch(Hostname + '/api/change_password', data);
 		}
 
 		function passwordReset(data) {
-			return $http.post('http://localhost:3000/api/reset_password', data);
+			return $http.post(Hostname + '/api/reset_password', data);
 		}
 	}
 })();

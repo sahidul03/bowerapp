@@ -1,0 +1,13 @@
+<div class="jumbotron text-center">
+    <h1>Car Page</h1>
+
+    <p>{{ createdCar }}</p>
+    <form ng-submit="submit()">
+        <input type="text" ng-model="newCar.title" placeholder="Title" /><br>
+        <input type="text" ng-model="newCar.price" placeholder="Price" /><br>
+        <input type="text" ng-model="newCar.discount" placeholder="Discount" /><br>
+        <textarea ng-model="newCar.details" placeholder="Details" ></textarea><br>
+        <input type="submit" id="submit" value="Submit" />
+
+    </form>
+</div>

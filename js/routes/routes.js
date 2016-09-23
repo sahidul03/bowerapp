@@ -23,19 +23,24 @@ bowerApp.config(function($routeProvider) {
 		.when('/contact', {
 			templateUrl : 'template/contact.html',
 			controller  : 'contactController'
+		})
+		.when('/newCar', {
+			templateUrl : 'template/newCar.html',
+			controller  : 'newCarController'
 		});
 });
 
-bowerApp.$inject = ['Car'];
+bowerApp.$inject = ['Car', 'Hostname'];
 
 // create the controller and inject Angular's $scope
 bowerApp.run(function($rootScope,$location){
 	$rootScope.auth_url = "http://localhost:3000"
 	$rootScope.image_url = $rootScope.auth_url
 });
-bowerApp.controller('mainController', function($scope, Car) {
+bowerApp.controller('mainController', function($scope, Car, Hostname) {
 	// create a message to display in our view
 	$scope.message = 'Everyone come and see how good I look!';
+	$scope.hostname = Hostname;
 	$scope.cars = Car.all().then(SuccessFn, ErrorFn);
 
 
@@ -54,4 +59,31 @@ bowerApp.controller('aboutController', function($scope) {
 
 bowerApp.controller('contactController', function($scope) {
 	$scope.message = 'Contact us! JK. This is just a demo.';
+});
+
+bowerApp.controller('newCarController', function($scope, Car, Hostname) {
+	$scope.message = 'New car page.';
+	$scope.newCar = {
+		title: '',
+		price: '',
+		discount: '',
+		details: '',
+		photo: null
+	};
+	$scope.createdCar = null;
+	$scope.submit = Submit;
+
+
+	function Submit(){
+		$scope.createdCar = Car.post($scope.newCar).then(SuccessFn, ErrorFn);
+
+
+		function SuccessFn(data) {
+			$scope.createdCar = data.data;
+		}
+
+		function ErrorFn() {
+			console.log('Error');
+		}
+	}
 });
