@@ -28,11 +28,7 @@
 		}
 
 		function post(car) {
-			return $http({
-					method : "POST",
-					url: Hostname + '/api/cars',
-					data: { car: car }
-			});
+			return $http.post(Hostname + '/api/cars', car);
 		}
 
 		function put(id) {
