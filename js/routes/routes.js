@@ -1,6 +1,6 @@
 // create the module and name it scotchApp
 // also include ngRoute for all our routing needs
-var bowerApp = angular.module('bowerApp', ['ngRoute']);
+var bowerApp = angular.module('bowerApp', ['ngRoute', 'ngFileUpload']);
 
 // configure our routes
 
@@ -30,7 +30,7 @@ bowerApp.config(function($routeProvider) {
 		});
 });
 
-bowerApp.$inject = ['Car', 'Hostname'];
+bowerApp.$inject = ['Car', 'Hostname', 'Upload'];
 
 // create the controller and inject Angular's $scope
 bowerApp.run(function($rootScope,$location){
@@ -61,7 +61,7 @@ bowerApp.controller('contactController', function($scope) {
 	$scope.message = 'Contact us! JK. This is just a demo.';
 });
 
-bowerApp.controller('newCarController', function($scope, Car, Hostname) {
+bowerApp.controller('newCarController', function($scope, Car, Hostname, Upload) {
 	$scope.message = 'New car page.';
 	$scope.newCar = {
 		title: '',
@@ -70,20 +70,26 @@ bowerApp.controller('newCarController', function($scope, Car, Hostname) {
 		details: '',
 		photo: null
 	};
+	$scope.file = null;
 	$scope.createdCar = null;
 	$scope.submit = Submit;
 
 
 	function Submit(){
-		$scope.createdCar = Car.post($scope.newCar).then(SuccessFn, ErrorFn);
+		//if ($scope.form.file.$valid && $scope.file) {
+		//	$scope.newCar.photo = $scope.file;
+			$scope.createdCar = Car.post($scope.newCar).then(SuccessFn, ErrorFn);
 
 
-		function SuccessFn(data) {
-			$scope.createdCar = data.data;
-		}
+			function SuccessFn(data) {
+				$scope.createdCar = data.data;
+			}
 
-		function ErrorFn() {
-			console.log('Error');
-		}
+			function ErrorFn() {
+				console.log('Error');
+			}
+			//$scope.upload($scope.file);
+		//}
+
 	}
 });

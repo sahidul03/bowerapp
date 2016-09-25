@@ -3,9 +3,9 @@
 		.module('bowerApp')
 		.factory('Car', Car);
 
-	Car.$inject = ['$http','Hostname'];
+	Car.$inject = ['$http','Hostname', 'Upload'];
 
-	function Car($http, Hostname) {
+	function Car($http, Hostname, Upload) {
 		var Car = {
 			all: all,
 			get: get,
@@ -28,7 +28,11 @@
 		}
 
 		function post(car) {
-			return $http.post(Hostname + '/api/cars', car);
+			//return $http.post(Hostname + '/api/cars', car);
+		return	Upload.upload({
+				url: Hostname + '/api/cars',
+				data: {car: car}
+			})
 		}
 
 		function put(id) {
