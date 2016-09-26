@@ -78,15 +78,15 @@ bowerApp.controller('newCarController', function($scope, Car, Hostname, Upload) 
 	function Submit(){
 		//if ($scope.form.file.$valid && $scope.file) {
 		//	$scope.newCar.photo = $scope.file;
-			$scope.createdCar = Car.post($scope.newCar).then(SuccessFn, ErrorFn);
+			Car.post($scope.newCar).then(SuccessFn, ErrorFn);
 
 
 			function SuccessFn(data) {
 				$scope.createdCar = data.data;
 			}
 
-			function ErrorFn() {
-				console.log('Error');
+			function ErrorFn(data) {
+				$scope.createdCar = data.data;
 			}
 			//$scope.upload($scope.file);
 		//}

@@ -1,18 +1,68 @@
 <div class="jumbotron text-center">
     <h1>Car Page</h1>
 
-    <p>{{ createdCar }}</p>
+    <!--<p>{{ createdCar }}</p>-->
     <form ng-submit="submit()">
-        <input type="text" ng-model="newCar.title" placeholder="Title" /><br>
-        <input type="text" ng-model="newCar.price" placeholder="Price" /><br>
-        <input type="text" ng-model="newCar.discount" placeholder="Discount" /><br>
-        <textarea ng-model="newCar.details" placeholder="Details" ></textarea><br>
-        <input ng-model="newCar.photo" type="file" ngf-select><br><br>
+        <div class="row">
+            <div class="col-md-1">
+                Title:
+            </div>
+            <div class="col-md-10">
+                <input type="text" ng-model="newCar.title" placeholder="Title" /><br>
+                <div ng-repeat="titleErr in createdCar.errors.title">
+                    {{ 'Title ' + titleErr }}
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1">
+                Price:
+            </div>
+            <div class="col-md-10">
+                <input type="text" ng-model="newCar.price" placeholder="Price" /><br>
+                <div ng-repeat="priceErr in createdCar.errors.price">
+                    {{ 'Price ' + priceErr }}
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1">
+                Discount:
+            </div>
+            <div class="col-md-10">
+                <input type="text" ng-model="newCar.discount" placeholder="Discount" /><br>
+                <div ng-repeat="discountErr in createdCar.errors.discount">
+                    {{ 'Discount ' + discountErr }}
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1">
+                Details:
+            </div>
+            <div class="col-md-10">
+                <textarea ng-model="newCar.details" placeholder="Details" ></textarea><br>
+                <div ng-repeat="detailsErr in createdCar.errors.details">
+                    {{ 'Details ' + detailsErr }}
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-1">
+                Photo:
+            </div>
+            <div class="col-md-10">
+                <input ng-model="newCar.photo" type="file" ngf-select><br><br>
+                <div ng-repeat="photoErr in createdCar.errors.photo">
+                    {{ 'Photo ' + photoErr }}
+                </div>
+            </div>
+        </div>
 
-        <!--Single Image with validations-->
-        <!--<div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"-->
-             <!--ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"-->
-             <!--ngf-resize="{width: 100, height: 100}">Select</div>-->
 
         <input type="submit" id="submit" value="Submit" />
 
