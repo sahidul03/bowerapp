@@ -1,6 +1,6 @@
 // create the module and name it scotchApp
 // also include ngRoute for all our routing needs
-var bowerApp = angular.module('bowerApp', ['ngRoute', 'ngFileUpload']);
+//var bowerApp = angular.module('bowerApp', ['ngRoute', 'ngFileUpload']);
 
 // configure our routes
 
@@ -17,6 +17,12 @@ bowerApp.config(function($routeProvider) {
 		.when('/about', {
 			templateUrl : 'template/about.html',
 			controller  : 'aboutController'
+		})
+
+		// route for the login page
+		.when('/login', {
+			templateUrl : 'template/login.html',
+			controller  : 'loginController'
 		})
 
 		// route for the contact page
@@ -57,8 +63,38 @@ bowerApp.controller('aboutController', function($scope) {
 	$scope.message = 'Look! I am an about page.';
 });
 
-bowerApp.controller('contactController', function($scope) {
+bowerApp.controller('loginController', function($scope, $auth) {
+	$scope.message = 'login page.';
+	$scope.handleLoginBtnClick = function() {
+		$auth.submitLogin($scope.loginForm)
+			.then(function(resp) {
+				// handle success response
+				console.log('success');
+				//$scope.$on('auth:login-success', function(ev, user) {
+				//	alert('Welcome ', user.email);
+				//});
+			})
+			.catch(function(resp) {
+				// handle error response
+				console.log('error');
+			});
+	};
+});
+
+
+bowerApp.controller('contactController', function($scope, $auth) {
 	$scope.message = 'Contact us! JK. This is just a demo.';
+	$scope.registrationForm = {}
+	$scope.handleRegBtnClick = function() {
+		$auth.submitRegistration($scope.registrationForm)
+			.then(function(resp) {
+				console.table(resp);
+			})
+			.catch(function(resp) {
+				console.table(resp);
+				// handle error response
+			});
+	};
 });
 
 bowerApp.controller('newCarController', function($scope, Car, Hostname, Upload) {
