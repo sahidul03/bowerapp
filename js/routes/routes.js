@@ -4,48 +4,129 @@
 
 // configure our routes
 
-bowerApp.config(function($routeProvider, $authProvider) {
-	$routeProvider
 
-		// route for the home page
-		.when('/', {
-			templateUrl : 'template/home.html',
-			controller  : 'mainController',
+
+bowerApp.config(function($authProvider, $urlRouterProvider, $stateProvider) {
+	$urlRouterProvider.otherwise("/login");
+	$stateProvider
+		.state('login', {
+			url: '/login',
+			templateUrl: 'template/login.html',
+			controller: 'loginController',
 			resolve: {
 				auth: function($auth,$state) {
-					return $auth.validateUser().
-						then(function(resp) {
-							console.log(resp);
-					    })
+					return $auth.validateUser().then(function(resp) {
+						console.log(resp);
+						$state.go('home');
+					})
 						.catch(function(){
-							console.log('please login');
-							//$state.go('login');
+
 						});
 				}
 			}
 		})
-
-		// route for the about page
-		.when('/about', {
-			templateUrl : 'template/about.html',
-			controller  : 'aboutController'
+		.state('about', {
+			url: '/about',
+			templateUrl: 'template/about.html',
+			controller: 'aboutController',
+			resolve: {
+				auth: function($auth,$state) {
+					return $auth.validateUser().then(function(resp) {
+						console.log(resp);
+					})
+						.catch(function(){
+							$state.go('login');
+						});
+				}
+			}
 		})
-
-		// route for the login page
-		.when('/login', {
-			templateUrl : 'template/login.html',
-			controller  : 'loginController'
+		.state('contact', {
+			url: '/contact',
+			templateUrl: 'template/contact.html',
+			controller: 'contactController',
+			resolve: {
+				auth: function($auth,$state) {
+					return $auth.validateUser().then(function(resp) {
+						console.log(resp);
+					})
+						.catch(function(){
+							$state.go('login');
+						});
+				}
+			}
 		})
-
-		// route for the contact page
-		.when('/contact', {
-			templateUrl : 'template/contact.html',
-			controller  : 'contactController'
+		.state('newCar', {
+			url: '/newCar',
+			templateUrl: 'template/newCar.html',
+			controller: 'newCarController',
+			resolve: {
+				auth: function($auth,$state) {
+					return $auth.validateUser().then(function(resp) {
+						console.log(resp);
+					})
+						.catch(function(){
+							$state.go('login');
+						});
+				}
+			}
 		})
-		.when('/newCar', {
-			templateUrl : 'template/newCar.html',
-			controller  : 'newCarController'
+		.state('home', {
+			url: '/',
+			templateUrl: 'template/home.html',
+			controller: 'mainController',
+			resolve: {
+				auth: function($auth,$state) {
+					return $auth.validateUser().then(function(resp) {
+
+					})
+						.catch(function(){
+							$state.go('login');
+						});
+				}
+			}
 		});
+
+
+	//$routeProvider
+	//	// route for the home page
+	//	.when('/', {
+	//		templateUrl : 'template/home.html',
+	//		controller  : 'mainController',
+	//		resolve: {
+	//			auth: function($auth,$state) {
+	//				return $auth.validateUser().
+	//					then(function(resp) {
+	//						console.log(resp);
+	//				    })
+	//					.catch(function(){
+	//						console.log('please login');
+	//						//$state.go('login');
+	//					});
+	//			}
+	//		}
+	//	})
+	//
+	//	// route for the about page
+	//	.when('/about', {
+	//		templateUrl : 'template/about.html',
+	//		controller  : 'aboutController'
+	//	})
+	//
+	//	// route for the login page
+	//	.when('/login', {
+	//		templateUrl : 'template/login.html',
+	//		controller  : 'loginController'
+	//	})
+	//
+	//	// route for the contact page
+	//	.when('/contact', {
+	//		templateUrl : 'template/contact.html',
+	//		controller  : 'contactController'
+	//	})
+	//	.when('/newCar', {
+	//		templateUrl : 'template/newCar.html',
+	//		controller  : 'newCarController'
+	//	});
 });
 
 bowerApp.$inject = ['Car', 'HostServerDomain', 'Upload'];
@@ -74,7 +155,8 @@ bowerApp.controller('aboutController', function($scope) {
 bowerApp.controller('loginController', function($scope,$auth,$rootScope,$state) {
 	$scope.message = 'login page.';
 	$rootScope.$on('auth:login-success', function(ev, user) {
-		console.log(user)
+		console.log(user);
+		$state.go('home');
 
 	});
 
@@ -111,7 +193,10 @@ bowerApp.controller('newCarController', function($scope, Car, HostServerDomain, 
 	function Submit(){
 		//if ($scope.form.file.$valid && $scope.file) {
 		//	$scope.newCar.photo = $scope.file;
-			Car.post($scope.newCar).then(SuccessFn, ErrorFn);
+		Upload.upload({
+			url: 'http://localhost:5000/api/cars',
+			data: {car: $scope.newCar}
+		}).then(SuccessFn, ErrorFn);
 
 
 			function SuccessFn(data) {
