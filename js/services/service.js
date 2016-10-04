@@ -3,9 +3,9 @@
 		.module('bowerApp')
 		.factory('Car', Car);
 
-	Car.$inject = ['$http','Hostname', 'Upload'];
+	Car.$inject = ['$http','HostServerDomain', 'Upload'];
 
-	function Car($http, Hostname, Upload) {
+	function Car($http, $auth, HostServerDomain, Upload) {
 		var Car = {
 			all: all,
 			get: get,
@@ -16,43 +16,44 @@
 			passwordChange: passwordChange,
 			passwordReset: passwordReset
 		};
-		//var host = 'http://demo-api.jinerbadsha.com/';
+		var host = 'http://localhost:5000';
 		return Car;
 
 		function all() {
-			return $http.get(Hostname + '/api/cars');
+			//console.log(HostServerDomain);
+			return $http.get(host + '/api/cars');
 		}
 
 		function get(id) {
-			return $http.get(Hostname + '/api/users', id);
+			return $http.get(host + '/api/users', id);
 		}
 
 		function post(car) {
 			//return $http.post(Hostname + '/api/cars', car);
 		return	Upload.upload({
-				url: Hostname + '/api/cars',
+				url: host + '/api/cars',
 				data: {car: car}
 			})
 		}
 
 		function put(id) {
-			return $http.put(Hostname + '/api/users', id);
+			return $http.put(host + '/api/users', id);
 		}
 
 		function del(id) {
-			return $http.delete(Hostname + '/api/users/' + id);
+			return $http.delete(host + '/api/users/' + id);
 		}
 
 		function address() {
-			return $http.get(Hostname + '/api/addresses');
+			return $http.get(host + '/api/addresses');
 		}
 
 		function passwordChange(data) {
-			return $http.patch(Hostname + '/api/change_password', data);
+			return $http.patch(host + '/api/change_password', data);
 		}
 
 		function passwordReset(data) {
-			return $http.post(Hostname + '/api/reset_password', data);
+			return $http.post(host + '/api/reset_password', data);
 		}
 	}
 })();

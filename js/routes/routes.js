@@ -4,13 +4,25 @@
 
 // configure our routes
 
-bowerApp.config(function($routeProvider) {
+bowerApp.config(function($routeProvider, $authProvider) {
 	$routeProvider
 
 		// route for the home page
 		.when('/', {
 			templateUrl : 'template/home.html',
-			controller  : 'mainController'
+			controller  : 'mainController',
+			resolve: {
+				auth: function($auth,$state) {
+					return $auth.validateUser().
+						then(function(resp) {
+							console.log(resp);
+					    })
+						.catch(function(){
+							console.log('please login');
+							//$state.go('login');
+						});
+				}
+			}
 		})
 
 		// route for the about page
@@ -36,17 +48,13 @@ bowerApp.config(function($routeProvider) {
 		});
 });
 
-bowerApp.$inject = ['Car', 'Hostname', 'Upload'];
+bowerApp.$inject = ['Car', 'HostServerDomain', 'Upload'];
 
 // create the controller and inject Angular's $scope
-bowerApp.run(function($rootScope,$location){
-	$rootScope.auth_url = "http://localhost:3000"
-	$rootScope.image_url = $rootScope.auth_url
-});
-bowerApp.controller('mainController', function($scope, Car, Hostname) {
+bowerApp.controller('mainController', function($scope,$auth,$rootScope, Car, HostServerDomain) {
 	// create a message to display in our view
 	$scope.message = 'Everyone come and see how good I look!';
-	$scope.hostname = Hostname;
+	$scope.hostname = HostServerDomain;
 	$scope.cars = Car.all().then(SuccessFn, ErrorFn);
 
 
@@ -55,7 +63,7 @@ bowerApp.controller('mainController', function($scope, Car, Hostname) {
 	}
 
 	function ErrorFn() {
-		console.log('Error');
+		console.log('can not get cars data');
 	}
 });
 
@@ -63,41 +71,30 @@ bowerApp.controller('aboutController', function($scope) {
 	$scope.message = 'Look! I am an about page.';
 });
 
-bowerApp.controller('loginController', function($scope, $auth) {
+bowerApp.controller('loginController', function($scope,$auth,$rootScope,$state) {
 	$scope.message = 'login page.';
-	$scope.handleLoginBtnClick = function() {
-		$auth.submitLogin($scope.loginForm)
-			.then(function(resp) {
-				// handle success response
-				console.log('success');
-				//$scope.$on('auth:login-success', function(ev, user) {
-				//	alert('Welcome ', user.email);
-				//});
-			})
-			.catch(function(resp) {
-				// handle error response
-				console.log('error');
-			});
-	};
+	$rootScope.$on('auth:login-success', function(ev, user) {
+		console.log(user)
+
+	});
+
+	$rootScope.$on('auth:login-error', function(ev, reason) {
+		//$scope.errors = reason.errors[0];
+		console.log("Failed to login!")
+	});
+	$rootScope.$on('auth:invalid', function() {
+		//$scope.errors = reason.errors[0];
+		console.log("Invalid!")
+	});
 });
 
 
 bowerApp.controller('contactController', function($scope, $auth) {
 	$scope.message = 'Contact us! JK. This is just a demo.';
-	$scope.registrationForm = {}
-	$scope.handleRegBtnClick = function() {
-		$auth.submitRegistration($scope.registrationForm)
-			.then(function(resp) {
-				console.table(resp);
-			})
-			.catch(function(resp) {
-				console.table(resp);
-				// handle error response
-			});
-	};
+
 });
 
-bowerApp.controller('newCarController', function($scope, Car, Hostname, Upload) {
+bowerApp.controller('newCarController', function($scope, Car, HostServerDomain, Upload) {
 	$scope.message = 'New car page.';
 	$scope.newCar = {
 		title: '',

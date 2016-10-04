@@ -1,13 +1,13 @@
 (function () {
 	angular
 		.module('bowerApp')
-		.factory('Hostname', Hostname);
+		.factory('HostServerDomain', HostServerDomain);
 
-	function Hostname() {
+	function HostServerDomain() {
 		//var Hostname = 'http://demo-api.jinerbadsha.com';
-		var Hostname = 'http://localhost:5000';
+		var HostServerDomain = { domain: 'http://localhost:5000' };
 
-		return Hostname;
+		return HostServerDomain;
 
 	}
 })();
