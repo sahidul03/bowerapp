@@ -8,6 +8,7 @@
 	function Car($http, $auth, HostServerDomain, Upload) {
 		var Car = {
 			all: all,
+			getCar: getCar,
 			get: get,
 			post: post,
 			put: put,
@@ -28,9 +29,20 @@
 			return $http.get(host + '/api/users', id);
 		}
 
+
+		function getCar(id) {
+			console.log(id);
+			//return $http({
+			//	url: host + '/api/cars',
+			//	method: "GET",
+			//	params: {id: id}
+			//});
+			return $http.get(host + '/api/cars',{id: id});
+		}
+
 		function post(car) {
 			//return $http.post(Hostname + '/api/cars', car);
-		return	Upload.upload({
+			return	Upload.upload({
 				url: host + '/api/cars',
 				data: {car: car}
 			})
