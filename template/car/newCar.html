@@ -8,8 +8,8 @@
                 Title:
             </div>
             <div class="col-md-10">
-                <input type="text" ng-model="newCar.title" placeholder="Title" /><br>
-                <div ng-repeat="titleErr in createdCar.errors.title">
+                <input type="text" ng-model="car.title" placeholder="Title" /><br>
+                <div ng-repeat="titleErr in savedCar.errors.title">
                     {{ 'Title ' + titleErr }}
                 </div>
             </div>
@@ -20,8 +20,8 @@
                 Price:
             </div>
             <div class="col-md-10">
-                <input type="text" ng-model="newCar.price" placeholder="Price" /><br>
-                <div ng-repeat="priceErr in createdCar.errors.price">
+                <input type="text" ng-model="car.price" placeholder="Price" /><br>
+                <div ng-repeat="priceErr in savedCar.errors.price">
                     {{ 'Price ' + priceErr }}
                 </div>
             </div>
@@ -32,8 +32,8 @@
                 Discount:
             </div>
             <div class="col-md-10">
-                <input type="text" ng-model="newCar.discount" placeholder="Discount" /><br>
-                <div ng-repeat="discountErr in createdCar.errors.discount">
+                <input type="text" ng-model="car.discount" placeholder="Discount" /><br>
+                <div ng-repeat="discountErr in savedCar.errors.discount">
                     {{ 'Discount ' + discountErr }}
                 </div>
             </div>
@@ -44,8 +44,8 @@
                 Details:
             </div>
             <div class="col-md-10">
-                <textarea ng-model="newCar.details" placeholder="Details" ></textarea><br>
-                <div ng-repeat="detailsErr in createdCar.errors.details">
+                <textarea ng-model="car.details" placeholder="Details" ></textarea><br>
+                <div ng-repeat="detailsErr in savedCar.errors.details">
                     {{ 'Details ' + detailsErr }}
                 </div>
             </div>
@@ -56,8 +56,8 @@
                 Photo:
             </div>
             <div class="col-md-10">
-                <input ng-model="newCar.photo" type="file" ngf-select><br><br>
-                <div ng-repeat="photoErr in createdCar.errors.photo">
+                <input ng-model="car.photo" type="file" ngf-select><br><br>
+                <div ng-repeat="photoErr in savedCar.errors.photo">
                     {{ 'Photo ' + photoErr }}
                 </div>
             </div>

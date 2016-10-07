@@ -5,7 +5,8 @@ bowerApp.controller('showCarController', function($scope, Car, HostServerDomain,
 
 
 	function SuccessFn(data) {
-		$scope.car = data;
+		$scope.car = data.data;
+		console.log($scope.car);
 	}
 	function ErrorFn(data) {
 		console.log(data)

@@ -57,6 +57,14 @@ bowerApp.config(function($authProvider, $urlRouterProvider, $stateProvider) {
 				auth: loginCheck
 			}
 		})
+		.state('editCar', {
+			url: '/editCar/:id',
+			templateUrl: 'template/car/newCar.html',
+			controller: 'editCarController',
+			resolve: {
+				auth: loginCheck
+			}
+		})
 		.state('home', {
 			url: '/',
 			templateUrl: 'template/home.html',

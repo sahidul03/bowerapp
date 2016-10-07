@@ -5,10 +5,11 @@
 
 	Car.$inject = ['$http','HostServerDomain', 'Upload'];
 
-	function Car($http, $auth, HostServerDomain, Upload) {
+	function Car($http, $auth, HostServerDomain, Upload, $rootScope) {
 		var Car = {
 			all: all,
 			getCar: getCar,
+			editCar: editCar,
 			get: get,
 			post: post,
 			put: put,
@@ -31,13 +32,11 @@
 
 
 		function getCar(id) {
-			console.log(id);
-			//return $http({
-			//	url: host + '/api/cars',
-			//	method: "GET",
-			//	params: {id: id}
-			//});
-			return $http.get(host + '/api/cars',{id: id});
+			return $http.get($auth.domain + '/api/cars/' + id + '.json');
+		}
+
+		function editCar(id) {
+			return $http.get($auth.domain + '/api/cars/' + id + '.json');
 		}
 
 		function post(car) {

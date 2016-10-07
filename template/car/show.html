@@ -1,12 +1,12 @@
 <div class="jumbotron text-center">
-    <h1>Details info of {{ car.title }}</h1>
+    <h1>Details info of {{ car.title }} <a ui-sref="editCar({id: car.id})">Edit</a> </h1>
 
     <div class="well well-sm">
         <div class="row">
             <div class="col-md-6">
                 <!-- ng-src instead of src to allow correct functionality with angular -->
                 <img src="{{ hostname.domain + car.photo.url}}"
-                     class="img-rounded img-responsive well-image">
+                     class="img-rounded img-responsive">
             </div>
             <div class="col-md-6">
                 <!-- ng-src instead of src to allow correct functionality with angular -->
