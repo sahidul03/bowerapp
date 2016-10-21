@@ -5,8 +5,14 @@ bowerApp.controller('editCarController', function($scope, Car, HostServerDomain,
 	$scope.submit = Submit;
 
 	function SuccessFn(data) {
-		$scope.car = data.data;
-		console.log($scope.car);
+		$scope.carData = data.data;
+		$scope.car = {
+			title: $scope.carData.title,
+			price: $scope.carData.price,
+			details: $scope.carData.details,
+			discount: $scope.carData.discount,
+			photo: $scope.carData.photo.url
+		}
 	}
 	function ErrorFn(data) {
 		console.log(data)
@@ -16,7 +22,7 @@ bowerApp.controller('editCarController', function($scope, Car, HostServerDomain,
 		//if ($scope.form.file.$valid && $scope.file) {
 		//	$scope.newCar.photo = $scope.file;
 		Upload.upload({
-			url: 'http://localhost:5000/api/cars/' + $scope.car.id,
+			url: 'http://localhost:5000/api/cars/' + $scope.carData.id,
 			method: 'PUT',
 			data: {car: $scope.car}
 		}).then(SuccessFn, ErrorFn);
