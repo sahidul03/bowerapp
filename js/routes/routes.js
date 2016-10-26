@@ -68,7 +68,7 @@ bowerApp.config(function($authProvider, $urlRouterProvider, $stateProvider) {
 		.state('home', {
 			url: '/',
 			templateUrl: 'template/home.html',
-			controller: 'mainController',
+			controller: 'homeController',
 			resolve: {
 				auth: loginCheck
 			}
