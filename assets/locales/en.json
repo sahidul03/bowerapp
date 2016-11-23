@@ -1,7 +1,29 @@
 {
-  "TITLE": "Hello",
   "FOO": "This is a paragraph.",
   "BUTTON_LANG_EN": "English",
-  "BUTTON_LANG_DE": "German",
-  "BUTTON_LANG_BN": "Bangla"
+  "BUTTON_LANG_DE": "Garman",
+  "BUTTON_LANG_BN": "Bangla",
+  "TITLE": "Title",
+  "CAR": "CAR",
+  "PRICE": "Price",
+  "DISCOUNT": "Discount",
+  "DETAILS": "Details",
+  "PHOTO": "Photo",
+  "SUBMIT": "Submit",
+  "HOME": "Home",
+  "ABOUT": "About",
+  "LOGIN": "Login",
+  "SIGN_IN": "Sign in",
+  "SIGN_OUT": "Sign out",
+  "SIGN_UP": "Sign up",
+  "LOGOUT": "Logout",
+  "PASSWORD": "Password",
+  "PASSWORD_CONFIRMATION": "Password confirmation",
+  "EMAIL": "Email",
+  "REGISTRATION": "Registration",
+  "NEW_CAR": "New Car",
+  "CONTACT": "Contact",
+  "HOME_MESSAGE": "Everyone come and see how good those cars look like!",
+  "EDIT": "Edit"
+
 }

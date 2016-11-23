@@ -1,7 +1,29 @@
 {
-  "TITLE": "Hello",
   "FOO": "This is a paragraph.",
   "BUTTON_LANG_EN": "ইংরেজী",
   "BUTTON_LANG_DE": "জার্মান",
-  "BUTTON_LANG_BN": "বাংলা"
+  "BUTTON_LANG_BN": "বাংলা",
+  "TITLE": "নামপত্র",
+  "CAR": "গাড়ি",
+  "PRICE": "মূল্য",
+  "DISCOUNT": "ছাড়",
+  "DETAILS": "বিবরণ",
+  "PHOTO": "ছবি",
+  "SUBMIT": "দাখিল করা",
+  "HOME": "হোম",
+  "ABOUT": "আমাদের সম্পর্কে",
+  "LOGIN": "লগ ইন",
+  "SIGN_IN": "সাইন ইন",
+  "SIGN_OUT": "সাইন আউট",
+  "SIGN_UP": "সাইন আপ",
+  "LOGOUT": "লগ আউট",
+  "PASSWORD": "পাসওয়ার্ড",
+  "PASSWORD_CONFIRMATION": "পাসওয়ার্ড নিশ্চিতকরণ",
+  "EMAIL": "ইমেইল",
+  "REGISTRATION": "অ্যাকাউন্ট খুলুন",
+  "NEW_CAR": "নতুন গাড়ি",
+  "CONTACT": "যোগাযোগ",
+  "HOME_MESSAGE": "সবাই আস এবং  দেখ গাড়ি গুলো কেমন",
+  "EDIT": "পরিবর্তন"
+
 }

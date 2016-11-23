@@ -1,5 +1,5 @@
 <div class="jumbotron text-center">
-    <h1>Details info of {{ car.title }} <a ui-sref="editCar({id: car.id})">Edit</a> </h1>
+    <h1> {{ car.title }} <a ui-sref="editCar({id: car.id})">{{ 'EDIT' | translate }}</a> </h1>
 
     <div class="well well-sm">
         <div class="row">
@@ -12,9 +12,9 @@
                 <!-- ng-src instead of src to allow correct functionality with angular -->
                 <h4> <a ui-sref="carShow({id: car.id})">{{car.title}}</a> </h4>
                 <!-- more angular data binding -->
-                <p><strong>Price: </strong>${{car.price}}</p>
-                <p><strong>Discount: </strong>${{car.discount}}</p>
-                <p><strong>Details: </strong>{{car.details}}</p>
+                <p><strong>{{ 'PRICE' | translate }}: </strong>${{car.price}}</p>
+                <p><strong>{{ 'DISCOUNT' | translate }}: </strong>${{car.discount}}</p>
+                <p><strong>{{ 'DETAILS' | translate }}: </strong>{{car.details}}</p>
                 <!-- ng-click is an angular directive to allow click events within angular -->
                 <!-- data-toggle and data-target are bootstrap attributes to trigger the popup modal -->
 

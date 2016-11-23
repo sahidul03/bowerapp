@@ -1,70 +1,70 @@
 <div class="jumbotron text-center">
-    <h1>Car Page</h1>
+    <h1>{{ 'CAR' | translate }}</h1>
 
     <!--<p>{{ createdCar }}</p>-->
     <form ng-submit="submit()">
         <div class="row">
             <div class="col-md-1">
-                Title:
+                {{ 'TITLE' | translate }}:
             </div>
             <div class="col-md-10">
-                <input type="text" ng-model="car.title" placeholder="Title" /><br>
+                <input type="text" ng-model="car.title" placeholder="{{ 'TITLE' | translate }}" /><br>
                 <div ng-repeat="titleErr in savedCar.errors.title">
-                    {{ 'Title ' + titleErr }}
+                    {{ 'TITLE' | translate + titleErr }}
                 </div>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-1">
-                Price:
+                {{ 'PRICE' | translate }}:
             </div>
             <div class="col-md-10">
-                <input type="text" ng-model="car.price" placeholder="Price" /><br>
+                <input type="text" ng-model="car.price" placeholder="{{ 'PRICE' | translate }}" /><br>
                 <div ng-repeat="priceErr in savedCar.errors.price">
-                    {{ 'Price ' + priceErr }}
+                    {{ 'PRICE' | translate  + priceErr }}
                 </div>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-1">
-                Discount:
+                {{ 'DISCOUNT' | translate }}:
             </div>
             <div class="col-md-10">
-                <input type="text" ng-model="car.discount" placeholder="Discount" /><br>
+                <input type="text" ng-model="car.discount" placeholder="{{ 'DISCOUNT' | translate }}" /><br>
                 <div ng-repeat="discountErr in savedCar.errors.discount">
-                    {{ 'Discount ' + discountErr }}
+                    {{ 'DISCOUNT' | translate + discountErr }}
                 </div>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-1">
-                Details:
+                {{ 'DETAILS' | translate }}:
             </div>
             <div class="col-md-10">
-                <textarea ng-model="car.details" placeholder="Details" ></textarea><br>
+                <textarea ng-model="car.details" placeholder="{{ 'DETAILS' | translate }}" ></textarea><br>
                 <div ng-repeat="detailsErr in savedCar.errors.details">
-                    {{ 'Details ' + detailsErr }}
+                    {{ 'DETAILS' | translate  + detailsErr }}
                 </div>
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-1">
-                Photo:
+                {{ 'PHOTO' | translate }}:
             </div>
             <div class="col-md-10">
                 <input ng-model="car.photo" type="file" ngf-select><br><br>
                 <div ng-repeat="photoErr in savedCar.errors.photo">
-                    {{ 'Photo ' + photoErr }}
+                    {{ 'PHOTO' | translate  + photoErr }}
                 </div>
             </div>
         </div>
 
 
-        <input type="submit" id="submit" value="Submit" />
+        <input type="submit" id="submit" value="{{ 'SUBMIT' | translate }}" />
 
     </form>
 </div>

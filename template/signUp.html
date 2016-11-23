@@ -1,22 +1,22 @@
 <div class="jumbotron text-center">
-    <h1>Sign up Page</h1>
+    <h1>{{ 'SIGN_UP' | translate }}</h1>
 
     <form ng-submit="submitRegistration(registrationForm)" role="form" ng-init="registrationForm = {}">
         <div class="form-group">
-            <label>email</label>
+            <label>{{ 'EMAIL' | translate }}</label>
             <input type="email" name="email" ng-model="registrationForm.email" required="required" class="form-control"/>
         </div>
 
         <div class="form-group">
-            <label>password</label>
+            <label>{{ 'PASSWORD' | translate }}</label>
             <input type="password" name="password" ng-model="registrationForm.password" required="required" class="form-control"/>
         </div>
 
         <div class="form-group">
-            <label>password confirmation</label>
+            <label>{{ 'PASSWORD_CONFIRMATION' | translate }}</label>
             <input type="password" name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" class="form-control"/>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-lg">Register</button>
+        <button type="submit" class="btn btn-primary btn-lg">{{ 'REGISTRATION' | translate }}</button>
     </form>
 </div>
