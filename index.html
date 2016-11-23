@@ -24,13 +24,18 @@
     <header>
         <nav class="navbar navbar-default">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <a href="#"><i class="fa fa-home"></i> Home</a>
                     <a href="#about"><i class="fa fa-shield"></i> About</a>
                     <a href="#contact"><i class="fa fa-comment"></i> Contact</a>
                     <a href="#newCar"><i class="fa fa-comment"></i> New car</a>
                 </div>
-                <div class="col-md-6 text-md-right">
+                <div class="col-md-3">
+                    <button ng-click="changeLanguage('en')">{{ 'BUTTON_LANG_EN' | translate }}</button>
+                    <button ng-click="changeLanguage('bn')">{{ 'BUTTON_LANG_BN' | translate }}</button>
+                </div>
+                <div class="col-md-4 text-md-right">
+
                     <a class="label label-default" ng-if="user.signedIn">Email: {{ user.email }} </a>
                     <button ng-if="user.signedIn" class="btn btn-primary btn-md pull-right" ng-click='signOut()'>Sign out</button>
                     <a ng-if="!user.signedIn" href="#login" class="btn btn-primary btn-md pull-right">Login</a>
@@ -71,6 +76,10 @@
 <script src="bower_components/ngSmoothScroll/lib/angular-smooth-scroll.js"></script>
 <script src="bower_components/underscore/underscore.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/ngstorage/ngStorage.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="libs/angular_translate/angular-translate-loader-static-files.js"></script>
+
 
 <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.min.js"></script> <!-- for no html5 browsers support -->
 <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
@@ -108,6 +117,7 @@
 <script src="js/controllers/loginController.js"></script>
 <script src="js/controllers/showCarController.js"></script>
 <script src="js/controllers/editCarController.js"></script>
+<script src="js/controllers/system/translatorController.js"></script>
 
 
 
