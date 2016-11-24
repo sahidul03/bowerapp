@@ -1,0 +1,22 @@
+
+    <nav class="navbar navbar-default">
+        <div class="row">
+            <div class="col-md-5">
+                <a href="#"><i class="fa fa-home"></i> {{ 'HOME' | translate }}</a>
+                <a href="#about"><i class="fa fa-shield"></i> {{ 'ABOUT' | translate }}</a>
+                <a href="#contact"><i class="fa fa-comment"></i> {{ 'CONTACT' | translate }}</a>
+                <a href="#newCar"><i class="fa fa-comment"></i> {{ 'NEW_CAR' | translate }}</a>
+            </div>
+            <div class="col-md-3">
+                <button ng-click="changeLanguage('en')">{{ 'BUTTON_LANG_EN' | translate }}</button>
+                <button ng-click="changeLanguage('bn')">{{ 'BUTTON_LANG_BN' | translate }}</button>
+            </div>
+            <div class="col-md-4 text-md-right">
+
+                <a class="label label-default" ng-if="user.signedIn">{{ 'EMAIL' | translate }}: {{ user.email }} </a>
+                <button ng-if="user.signedIn" class="btn btn-primary btn-md pull-right" ng-click='signOut()'>{{ 'SIGN_OUT' | translate }}</button>
+                <a ng-if="!user.signedIn" href="#login" class="btn btn-primary btn-md pull-right">{{ 'LOGIN' | translate }}</a>
+                <a ng-if="!user.signedIn" href="#signUp" class="btn btn-primary btn-md pull-right">{{ 'REGISTRATION' | translate }}</a>
+            </div>
+        </div>
+    </nav>
