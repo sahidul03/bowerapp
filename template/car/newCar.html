@@ -10,7 +10,7 @@
             <div class="col-md-10">
                 <input type="text" ng-model="car.title" placeholder="{{ 'TITLE' | translate }}" /><br>
                 <div ng-repeat="titleErr in savedCar.errors.title">
-                    {{ 'TITLE' | translate + titleErr }}
+                   {{ 'TITLE' | translate }}  {{ titleErr }}
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
             <div class="col-md-10">
                 <input type="text" ng-model="car.price" placeholder="{{ 'PRICE' | translate }}" /><br>
                 <div ng-repeat="priceErr in savedCar.errors.price">
-                    {{ 'PRICE' | translate  + priceErr }}
+                    {{ 'PRICE' | translate }} {{ priceErr }}
                 </div>
             </div>
         </div>
@@ -34,7 +34,7 @@
             <div class="col-md-10">
                 <input type="text" ng-model="car.discount" placeholder="{{ 'DISCOUNT' | translate }}" /><br>
                 <div ng-repeat="discountErr in savedCar.errors.discount">
-                    {{ 'DISCOUNT' | translate + discountErr }}
+                    {{ 'DISCOUNT' | translate }} {{ discountErr }}
                 </div>
             </div>
         </div>
@@ -46,7 +46,7 @@
             <div class="col-md-10">
                 <textarea ng-model="car.details" placeholder="{{ 'DETAILS' | translate }}" ></textarea><br>
                 <div ng-repeat="detailsErr in savedCar.errors.details">
-                    {{ 'DETAILS' | translate  + detailsErr }}
+                    {{ 'DETAILS' | translate }} {{ detailsErr }}
                 </div>
             </div>
         </div>
@@ -58,7 +58,7 @@
             <div class="col-md-10">
                 <input ng-model="car.photo" type="file" ngf-select><br><br>
                 <div ng-repeat="photoErr in savedCar.errors.photo">
-                    {{ 'PHOTO' | translate  + photoErr }}
+                    {{ 'PHOTO' | translate }} {{ photoErr }}
                 </div>
             </div>
         </div>
